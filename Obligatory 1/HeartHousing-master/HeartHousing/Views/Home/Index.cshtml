@@ -1,0 +1,19 @@
+﻿@model RentalListViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to HeartHousing</h1>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var rental in Model.Rentals)
+    {
+        <partial name="_RentalCard" model="rental" />
+    }
+</div>
+
+
+
+

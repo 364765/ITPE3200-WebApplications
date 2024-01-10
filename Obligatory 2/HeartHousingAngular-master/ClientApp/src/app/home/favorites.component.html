@@ -1,0 +1,24 @@
+
+<h1>FAVORITES</h1>
+
+<!--
+
+  Because of inhability to fix our problem with the favorited variable, and it keeping the value given on
+  the home page. This page does not work, but we have it to show how we think it would be done.
+  Because of our problems we have not been able to test out this code 
+
+-->
+<div class="card-container" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="82px">
+  <mat-card class="rental-card" *ngFor="let rental of favoriteRentals">
+    <mat-card-header>
+      <div mat-card-avatar class="rental-image"></div>
+      <mat-card-title class="rental-title">{{rental.Name}}</mat-card-title>
+      <mat-card-subtitle class="address-title">{{rental.Address}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src=img [src]=rental.ImageUrl width="350" alt="Rental photo">
+    <mat-card-content class="card-content">
+      <p class="price">Price per night: {{rental.PricePrNight | convertToCurrency: 'kr'}}</p>
+
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,63 @@
+<div class="rental-details">
+  <h1>Details of {{ rental.Name }}</h1>
+
+  <div class="details-info-title">
+    <h3>Name:</h3>
+    <div>{{ rental.Name }}</div>
+  </div>
+
+    <div class="details-info-title">
+      <h3>Address:</h3>
+      <div>{{ rental.Address }}</div>
+    </div>
+
+    <div class="details-info-title">
+      <h3>Price per night:</h3>
+      <div>{{ rental.PricePrNight }}</div>
+    </div>
+
+    <div class="details-info-title">
+      <h3>Rental type:</h3>
+      <div>{{ rental.Type }}</div>
+    </div>
+
+    <div class="details-info-title">
+      <h3>Number of baths:</h3>
+      <div>{{ rental.BathNr }}</div>
+    </div>
+
+    <div class="details-info-title">
+      <h3>Number of beds:</h3>
+      <div>{{ rental.BedNr }}</div>
+    </div>
+
+    <div class="details-info-title">
+      <h3>Area:</h3>
+      <div>{{ rental.Area }}</div>
+    </div>
+
+    <div class="details-info-title">
+      <h3>Description:</h3>
+      <div>{{ rental.Description }}</div>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button mat-raised-button color="primary" class="createBtn" (click)="navigateToCreateOrder(rental.RentalId)">Create
+      Order
+    </button>
+    <button mat-raised-button color="disabled" (click)="backToRentals()">Cancel</button>
+  </div>
+
+  <div class="imageCarousel-container">
+    <div class="imageCarousel-prev-button">
+      <button mat-icon-button color="accent" (click)="prevImage()"><</button>
+    </div>
+    <div class="imageCarousel" [@slideAnimation]="currentindex">
+      <img id="carousel-image" [src]="currentindex === 0 ? rental.ImageUrl : (currentindex === 1 ? rental.ImageUrl2 : rental.ImageUrl3)" alt="ImageSlides">
+    </div>
+    <div class="imageCarousel-next-button">
+      <button mat-icon-button color="accent" (click)="nextImage()">></button>
+    </div>
+  </div>
+

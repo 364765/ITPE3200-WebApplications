@@ -1,0 +1,74 @@
+@model RentalListViewModel
+@{
+    ViewData["Title"] = "My Rentals";
+}
+
+<h1>Your Rentals</h1>
+<a class="btn btn-secondary"
+   asp-controller="Rental"
+   asp-action="CreateRental">
+    Create rental
+</a>
+
+@foreach (var rental in Model.Rentals)
+{
+    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 20px;">
+        <div class="container">
+            <h5>Order @rental.RentalID </h5>
+            <div>
+                <table class='table table-striped' style='max-width: 1200px;'>
+                    <tr class="table-header">
+                        <th>RentalID</th>
+                        <th>Rental name</th>
+                        <th>Address</th>
+                        <th>Price per night</th>
+                        <th>Rental type</th>
+                        <th>Number of beds</th>
+                        <th>Number of bathrooms</th>
+                        <th>Area</th>
+
+
+                    </tr>
+                    <tr>
+                        <td>@rental.RentalID</td>
+                        <td>@rental.Name</td>
+                        <td>@rental.Address</td>
+                        <td>@rental.PricePrNigth</td>
+                        <td>@rental.RentalType</td>
+                        <td>@rental.BedNr</td>
+                        <td>@rental.BathNr</td>
+                        <td>@rental.Area</td>
+
+
+                        <td>
+                            <a class="btn btn-primary"
+                               asp-controller="Rental"
+                               asp-action="UpdateRental"
+                               asp-route-RentalID="@rental.RentalID">
+                                Update rental
+                            </a>
+                            <br>
+                            <br>
+                            <a class="btn btn-danger"
+                               asp-controller="Rental"
+                               asp-action="DeleteRental"
+                               asp-route-id="@rental.RentalID">
+                                Delete rental
+                            </a>
+                            <br>
+                            <br>
+                            <a class="btn btn-secondary"
+                               asp-controller="Rental"
+                               asp-action="Details"
+                               asp-route-id="@rental.RentalID">
+                                Details
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+}

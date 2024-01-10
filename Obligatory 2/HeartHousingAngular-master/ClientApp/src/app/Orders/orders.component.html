@@ -1,0 +1,29 @@
+<h1 id="tabelLabel">List of Orders</h1>
+
+<table class="table table-striped" aria-labelledby="tableLabel">
+  <thead>
+    <tr>
+      <th>Order Id</th>
+      <!-- Prøvde å få til å funke -->
+      <!--<th>Rental Id</th>-->
+      <th>NightsNr</th>
+      <th>Total price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let order of orders'>
+      <td>{{order.OrderId}}</td>
+      <!--<td>{{rentalId}}</td>-->
+
+      <td>{{order.NightsNr}}</td>
+      <td width="120">{{order.TotalPrice | convertToCurrency: 'kr'}}</td>
+      <td>
+        <a mat-raised-button color="primary" [routerLink]="['/orderform', 'edit', order.OrderId]">Update</a>
+        <a mat-raised-button color="disabled" class="delete-link" (click)="deleteOrder(order)">Delete</a>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+

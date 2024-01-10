@@ -1,0 +1,42 @@
+<h2>{{ isEditMode ? 'Update' : 'Create'}} Order</h2>
+
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+
+  <table class="form-group" cellspacing="0">
+    <!-- Name and address-->
+    <tr>
+      <td>
+        <mat-form-field class="form-group">
+
+          <!-- Display av valgt rental -->
+          <mat-label>Rental ID</mat-label>
+          <input matInput formControlName="RentalId" readonly>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-group">
+          <mat-label>NightsNr</mat-label>
+          <input type="number" matInput formControlName="NightsNr" min="1" (change)="rengUt(orderForm.get('NightsNr')?.value)">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-group">
+          <mat-label>Total Price:</mat-label>
+          <input matInput formControlName="TotalPrice" min="1" readonly>
+        </mat-form-field>
+      </td>
+    </tr>
+    </table>
+
+
+    <button mat-raised-button color="primary" class="createOrderBtn" type="submit" [disabled]="orderForm.invalid">
+      {{ isEditMode ? 'Update' : 'Create'}} Order
+    </button>
+
+
+    <button mat-raised-button color="disabled" (click)="backToOrders()">Cancel</button>
+  </form>
+
+
+
+

@@ -1,0 +1,61 @@
+﻿@model OrderListViewModel
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+<h1>Your Rental Orders</h1>
+
+@foreach (var order in Model.Orders)
+{
+    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 20px;">
+        <div class="container">
+            <h5>Order @order.OrderID </h5>
+            <div>
+                <table class='table table-striped' style='max-width: 1200px;'>
+                    <tr class="table-header">
+                        <th>OrderId</th>
+                        <th>Rental name</th>
+                        <th>Number of nights</th>
+                        <th>Total price</th>
+                        <th>RentalId</th>
+                    </tr>
+                    <tr>
+                        <td>@order.OrderID</td>
+                        <td>@order.Rental.Name</td>
+                        <td>@order.NightsNr</td>
+                        <td>@order.TotalPrice</td>
+                        <td>@order.RentalID</td>
+
+                        <td>
+                            <a class="btn btn-primary"
+                               asp-controller="Order"
+                               asp-action="UpdateOrder"
+                               asp-route-OrderID="@order.OrderID">Update Order</a>
+                            <br>
+                            <br>
+                            <a class="btn btn-danger"
+                               asp-controller="Order"
+                               asp-action="DeleteOrder"
+                               asp-route-id="@order.OrderID">Delete Order</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-secondary"
+                               asp-controller="Rental"
+                               asp-action="Details"
+                               asp-route-id="@order.RentalID">View Rental</a>
+                            <br>
+                            <br>
+                            <a class="btn btn-secondary"
+                               asp-controller="Order"
+                               asp-action="CreateOrder">Book again</a>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+}
+
+

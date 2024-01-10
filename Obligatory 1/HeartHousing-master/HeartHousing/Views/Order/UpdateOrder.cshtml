@@ -1,0 +1,29 @@
+﻿@model UpdateOrderViewModel
+
+<h1>Update Your Order</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+
+<form asp-action="UpdateOrder">
+    
+    <div class="form-group">
+        <label asp-for="NightsNr"></label>
+        <input asp-for="NightsNr" class="form-control" />
+        <span asp-validation-for="NightsNr" class="text-danger"></span>
+    </div>
+    
+    <input type="hidden" asp-for="OrderID" value="@Model.OrderID" />
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Table" class="btn btn-secondary">Cancel</a>
+    
+</form>
+
+
+
+
+
+
+
+

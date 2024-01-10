@@ -1,0 +1,52 @@
+<h1 id="tableLabel">List of your Rentals</h1>
+
+<mat-form-field class="rental-filter" color="accent">
+  <mat-label>Filter rentals:</mat-label>
+  <input matInput type="text" [(ngModel)]="listFilter" placeholder="Ex. Cabin">
+</mat-form-field>
+<button mat-raised-button color="primary" class="createRentalBtn" [routerLink]="['/rentalform', 'create', -1]">Create Rental</button>
+
+
+
+<table class="table table-striped" aria-labelledby="tableLabel">
+  <thead>
+  <tr>
+    <th>Rental Id</th>
+    <th>Rental name</th>
+    <th>Address</th>
+    <th>Price per night</th>
+    <th>Rental type</th>
+    <th>Number of beds</th>
+    <th>Number of bathrooms</th>
+    <th>Area</th>
+    <th>Description</th>
+    <th width="180">
+      <button mat-stroked-button color="accent" (click)="toggleImage()">
+        {{displayImage ? 'Hide' : 'Show'}} Image
+      </button>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rental of filteredRentals">
+      <td>{{rental.RentalId}}</td>
+      <td>{{rental.Name}}</td>
+      <td>{{rental.Address}}</td>
+      <td width="120">{{rental.PricePrNight | convertToCurrency: 'kr'}}</td>
+      <td>{{rental.RentalType}}</td>
+      <td>{{rental.BedNr}}</td>
+      <td>{{rental.BathNr}}</td>
+      <td>{{rental.Area}}</td>
+      <td>{{rental.Description}}</td>
+      <td *ngIf="displayImage"><img [src]=rental.ImageUrl width="80" /></td>
+      <td>
+        <a mat-button color="accent" [routerLink]="['/rentalform', 'edit', rental.RentalId]">Update</a>
+        <a mat-button color="warn" class="delete-link" (click)="deleteRental(rental)">Delete</a>
+
+      </td>
+    </tr>
+
+
+  </tbody>
+</table>
+

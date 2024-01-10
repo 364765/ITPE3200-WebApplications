@@ -1,0 +1,58 @@
+/*Rental card background color*/
+.rental-card {
+  background-color: #f0f0f0;
+  width: 350px;
+}
+
+/*Rental card address title color*/
+.address-title{
+  color: black;
+}
+
+/*Rental card bottom margin*/
+.rental-card:not(:last-child) {
+  margin-bottom: 82px;
+}
+
+.rental-title{
+  margin-left:-55px;
+}
+
+.address-title{
+  margin-left:-55px;
+}
+
+/*Rental card price pr night and button*/
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.price {
+  margin: 0;
+}
+
+.details-btn{
+  margin-top: 2px;
+}
+
+.material-icons {
+    color: deeppink;
+}
+
+/* Heart button (favorite) */
+.heart-button {
+  cursor: pointer;
+  font-size: 1%;
+  color: deeppink;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.btnShowFav{
+  margin-left: 10px;
+}
+

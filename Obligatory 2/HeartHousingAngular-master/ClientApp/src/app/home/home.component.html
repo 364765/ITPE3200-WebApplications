@@ -1,0 +1,36 @@
+
+<mat-form-field class="rental-filter" color="accent">
+  <mat-label>Filter rentals:</mat-label>
+  <input matInput type="text" [(ngModel)]="listFilter" placeholder="Ex. Cabin">
+</mat-form-field>
+
+<button mat-raised-button color="accent" class="btnShowFav" (click)="navigateToFavorites()">Show only favorites</button>
+
+
+
+<div class="card-container" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="82px">
+  <mat-card class="rental-card" *ngFor="let rental of filteredRentals">
+    <mat-card-header>
+      <div mat-card-avatar class="rental-image"></div>
+      <mat-card-title class="rental-title">{{rental.Name}}</mat-card-title>
+
+      <button (click)="toggleButton(rental)" class="heart-button">
+        <!-- Fills or unfills the heart icon, if it has been favorited or not -->
+        <mat-icon *ngIf="!rental.Favorited">favorite_border</mat-icon>
+        <mat-icon *ngIf="rental.Favorited">favorite</mat-icon>
+      </button>
+
+      <mat-card-subtitle class="address-title">{{rental.Address}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src=img [src]=rental.ImageUrl width="350" alt="Rental photo">
+    <mat-card-content class="card-content">
+      <p class="price">Price per night: {{rental.PricePrNight | convertToCurrency: 'kr'}}</p>
+      <button mat-button color="accent" (click)="navigateToDetails(rental.RentalId)">Details</button>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+
+

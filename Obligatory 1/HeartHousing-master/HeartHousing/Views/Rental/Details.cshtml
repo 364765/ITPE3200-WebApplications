@@ -1,0 +1,47 @@
+@model Rental
+@{
+    ViewData["Title"] = "Rental Details";
+}
+
+<div class="container">
+    <h3 class="my-5">
+        @Model.Name
+    </h3>
+
+
+    <div class="row gx-5">
+        <div class="col-lg-6">
+            <partial name="_Carousel" />
+        </div>
+        <div class="col-lg-6">
+            <div class="col-12">
+                <h4>@Model.Description</h4>
+                <h5>@Model.Address</h5>
+                <h6 class="pull-right">@Model.PricePrNigth.ToString("0.00 NOK/Per night")</h6>
+                <ul>
+                    <li>Bedrooms: @Model.BedNr</li>
+                    <li>Bathrooms: @Model.BathNr</li>
+                    <li>Area: @Model.Area</li>
+                </ul>
+            </div>
+            <p>
+                <a class="btn btn-secondary"
+                   asp-controller="Order"
+                   asp-action="CreateOrder"
+                asp-route-RentalID="@Model.RentalID">Book rental</a>   
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .col-lg-6 {
+        
+    }
+
+    .col-12 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+</style>

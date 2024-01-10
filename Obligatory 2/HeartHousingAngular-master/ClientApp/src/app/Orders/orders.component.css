@@ -1,0 +1,29 @@
+thead {
+  color: blue;
+}
+
+.delete-link {
+  margin-left: 8px;
+  color: red;
+  cursor: pointer;
+}
+
+
+.custom-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+  display: block;
+  margin-bottom: 15px;
+}
+
+
+.form-control {
+  width: 20%;
+}
+
+.createOrderBtn{
+  margin-right: 10px;
+}

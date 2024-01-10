@@ -1,0 +1,88 @@
+<h2>{{ isEditMode ? 'Update' : 'Create'}} Rental</h2>
+
+
+<form [formGroup]="rentalForm" (ngSubmit)="onSubmit()">
+  <table class="form-group" cellspacing="0">
+    <!-- Name and address-->
+    <tr>
+      <td>
+        <mat-form-field class="form-group">
+          <mat-label>Rental name: </mat-label>
+          <input matInput formControlName="Name" placeholder="This rental is called...">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-group">
+          <mat-label>Address:</mat-label>
+          <input matInput formControlName="Address" placeholder="Rentals location...">
+        </mat-form-field>
+      </td>
+    </tr>
+    <!-- Price per night and area -->
+    <tr>
+      <td>
+        <mat-form-field class="form-group">
+          <mat-label>Price Per Night</mat-label>
+          <input type="number" matInput formControlName="PricePrNight" min="1">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-group">
+          <mat-label>Area:</mat-label>
+          <input type="number" matInput formControlName="Area" min="1">
+        </mat-form-field>
+      </td>
+    </tr>
+    <!-- Bed and baths-->
+    <tr>
+      <td>
+        <mat-form-field class="form-group">
+          <mat-label>Number of beds:</mat-label>
+          <input type="number" matInput formControlName="BedNr" placeholder="Number of bedrooms..." min="1">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-group">
+          <mat-label>Number of bathrooms:</mat-label>
+          <input type="number" matInput formControlName="BathNr" placeholder="Number of bathrooms..." min="1 ">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <!-- Input for Rental Type -->
+        <mat-form-field class="form-group">
+          <mat-label>RentalType</mat-label>
+          <input matInput formControlName="RentalType" placeholder="Rentals location...">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Input for Description -->
+  <mat-form-field class="form-group-extras">
+          <mat-label>Leave a comment</mat-label>
+    <textarea matInput formControlName="Description" placeholder="This rental is ..."></textarea>
+  </mat-form-field>
+
+  <!-- Images -->
+  <mat-form-field class="form-group-extras">
+    <mat-label>Image URL 1:</mat-label>
+    <input matInput formControlName="ImageUrl">
+  </mat-form-field>
+  <mat-form-field class="form-group-extras">
+    <mat-label>Image URL 2:</mat-label>
+    <input matInput formControlName="ImageUrl2">
+  </mat-form-field>
+  <mat-form-field class="form-group-extras">
+    <mat-label>Image URL 3:</mat-label>
+    <input matInput formControlName="ImageUrl3">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="createRentalBtn2" type="submit" [disabled]="rentalForm.invalid">
+    {{ isEditMode ? 'Update' : 'Create' }} Rental
+  </button>
+  <button mat-raised-button color="disabled" (click)="backToRentals()">Cancel</button>
+</form>
+
+
